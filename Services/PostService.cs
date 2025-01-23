@@ -15,7 +15,8 @@ public class PostService
 
     public async Task<IEnumerable<Post>> GetAllPostsAsync() => await _context.Posts.ToListAsync();
 
-    public async Task<Post?> GetPostByIdAsync(int id) => await _context.Posts.FindAsync(id);
+    public async Task<Post?> GetPostByNameAsync(string name) =>
+        await _context.Posts.Where(p => p.Name == name).FirstOrDefaultAsync();
 
     public async Task AddPostAsync(Post post)
     {

@@ -22,10 +22,10 @@ public class PostsController : ControllerBase
         return Ok(posts);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
+    [HttpGet("{name}")]
+    public async Task<IActionResult> GetByName(string name)
     {
-        var post = await _postService.GetPostByIdAsync(id);
+        var post = await _postService.GetPostByNameAsync(name);
         if (post == null) return NotFound();
 
         return Ok(post);
@@ -35,7 +35,7 @@ public class PostsController : ControllerBase
     public async Task<IActionResult> Create(Post post)
     {
         await _postService.AddPostAsync(post);
-        return CreatedAtAction(nameof(GetById), new { id = post.Id }, post);
+        return CreatedAtAction(nameof(GetByName), new { name = post.Name }, post);
     }
 
     [HttpPut("{id}")]
