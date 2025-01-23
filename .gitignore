@@ -1,0 +1,23 @@
+# Ignorar las carpetas de compilación
+bin/
+obj/
+
+# Ignorar las migraciones si no las subes
+Migrations/
+
+# Ignorar archivos de configuración con datos sensibles
+appsettings.json
+appsettings.Development.json
+secrets.json
+
+# Ignorar las carpetas de configuración de IDE
+.vs/
+.idea/
+.vscode/
+
+# Ignorar archivos de NuGet
+.nuget/
+
+# Ignorar archivos de variables de entorno
+.env
+.env.local
