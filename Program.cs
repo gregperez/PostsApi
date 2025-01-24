@@ -10,7 +10,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<PostService>();
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -32,6 +32,11 @@ if (app.Environment.IsDevelopment())
 
 // Middleware
 app.UseHttpsRedirection();
+app.UseCors(b =>
+    b
+        .WithOrigins("*")
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 app.UseAuthorization();
 app.MapControllers();
 
