@@ -39,7 +39,7 @@ public class PostsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Post post)
+    public async Task<IActionResult> Update(long id, Post post)
     {
         var success = await _postService.UpdatePostAsync(id, post);
         if (!success) return NotFound();
@@ -48,7 +48,7 @@ public class PostsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(long id)
     {
         var success = await _postService.DeletePostAsync(id);
         if (!success) return NotFound();

@@ -24,7 +24,7 @@ public class PostService
         await _context.SaveChangesAsync();
     }
 
-    public async Task<bool> UpdatePostAsync(int id, Post updatedPost)
+    public async Task<bool> UpdatePostAsync(long id, Post updatedPost)
     {
         var existingPost = await _context.Posts.FindAsync(id);
         if (existingPost == null) return false;
@@ -36,7 +36,7 @@ public class PostService
         return true;
     }
 
-    public async Task<bool> DeletePostAsync(int id)
+    public async Task<bool> DeletePostAsync(long id)
     {
         var post = await _context.Posts.FindAsync(id);
         if (post == null) return false;
